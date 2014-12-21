@@ -21,14 +21,18 @@ class Mustache_Cache_WordPressCache extends Mustache_Cache_AbstractCache
    */
   public function load($key)
   {
-    $this->log(Mustache_Logger::DEBUG, 'Loaded from WP Object Cache cache: "{key}"', array('key' => $key));
     if(($value = wp_cache_get($key, self::GROUP)) !== false)
     {
+      $this->log(Mustache_Logger::DEBUG, 'Loaded from WP Object Cache: "{key}"', array('key' => $key));
       eval('?>' . $value);
       return true;
     }
     else
+    {
+      $this->log(Mustache_Logger::DEBUG, 'Cache miss from WP Object Cache: "{key}"', array('key' => $key));
       return false;
+    }
+      
   }
 
   /**
