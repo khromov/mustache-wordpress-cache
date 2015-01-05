@@ -10,10 +10,11 @@ class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
   var $group = '';
 
   /**
-   * Constructor
+   * Constructor. Allows you to set a key prefix and
+   * the Object Cache group to use.
    *
-   * Mustache internally builds unique template names in getTemplateClassName(), using this logic:
-   * ...
+   * Setting a custom prefix or group isn't required, see:
+   * https://github.com/bobthecow/mustache.php/issues/246
    *
    * @param string $key_prefix
    * @param string $group
@@ -25,7 +26,7 @@ class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
   }
 
   /**
-   * Load the class from cache
+   * Load the class from cache.
    *
    * @param string $key
    * @return boolean
@@ -49,7 +50,7 @@ class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
   }
 
   /**
-   * Cache and load the compiled class
+   * Cache and load the compiled class.
    *
    * @param string $key
    * @param string $value

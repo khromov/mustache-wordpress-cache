@@ -13,3 +13,10 @@ $mustache = new Mustache_Engine( array(
     ...
   ) );
 ```
+
+#### Constructor parameters
+
+You don't have to pass anything when constructing the cache, but you can pass the following parameters if you want:
+
+**$key_prefix** - The object cache key prefix to use. (Default: "")  
+**$group** - The object cache group to use. (Default: "mustache-cache")
