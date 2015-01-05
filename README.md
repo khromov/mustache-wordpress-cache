@@ -11,7 +11,7 @@ use Khromov\Mustache_Cache\Mustache_Cache_WordPressCache;
 
 $mustache = new Mustache_Engine( array(
     ...
-    'cache'           => new Mustache_Cache_WordPressCache()
+    'cache'           => \Khromov\Mustache_Cache\Mustache_Cache_WordPressCache()
     ...
   ) );
 ```

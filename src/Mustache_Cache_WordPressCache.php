@@ -6,24 +6,35 @@ namespace Khromov\Mustache_Cache;
  */
 class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
 {
-  const GROUP = 'mustache-cache';
+  var $key_prefix = '';
+  var $group = '';
 
   /**
-   * Filesystem cache constructor.
+   * Constructor
+   *
+   * Mustache internally builds unique template names in getTemplateClassName(), using this logic:
+   * ...
+   *
+   * @param string $key_prefix
+   * @param string $group
    */
-  public function __construct()
+  public function __construct($key_prefix = '', $group = 'mustache-cache')
   {
+    $this->key_prefix = $key_prefix;
+    $this->group = $group;
   }
 
   /**
    * Load the class from cache
    *
    * @param string $key
-   * @return booleanc
+   * @return boolean
    */
   public function load($key)
   {
-    if(($value = wp_cache_get($key, self::GROUP)) !== false)
+    $key = $this->key_prefix . $key;
+
+    if(($value = wp_cache_get($key, $this->group)) !== false)
     {
       $this->log(\Mustache_Logger::DEBUG, 'Loaded from WP Object Cache: "{key}"', array('key' => $key));
       eval('?>' . $value);
@@ -47,8 +58,10 @@ class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
    */
   public function cache($key, $value)
   {
+    $key = $this->key_prefix . $key;
+
     $this->log(\Mustache_Logger::DEBUG, 'Adding to WP Object Cache cache: "{key}"', array('key' => $key));
-    wp_cache_set($key, $value, self::GROUP);
+    wp_cache_set($key, $value, $this->group);
     eval('?>' . $value);
   }
 }
