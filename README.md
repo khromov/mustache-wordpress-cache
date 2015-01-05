@@ -7,6 +7,7 @@ Uses the [WordPress Object cache](http://codex.wordpress.org/Class_Reference/WP_
 #### Example
 
 ```php
+use Khromov\Mustache_Cache\Mustache_Cache_WordPressCache;
 
 $mustache = new Mustache_Engine( array(
     ...

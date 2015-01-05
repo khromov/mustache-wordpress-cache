@@ -1,8 +1,14 @@
 {
   "name": "khromov/mustache-wordpress-cache",
-  "type": "wordpress-plugin",
+  "description": "WordPress cache adapter for Mustache.php",
+  "license": "GPL",
+  "type": "library",
   "require": {
-    "composer/installers": "~1.0",
     "mustache/mustache" : "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Khromov\\Mustache_Cache\\": "src"
+    }
   }
 }

@@ -1,4 +1,6 @@
 <?php
+namespace Khromov\Mustache_Cache;
+
 /**
  * Mustache Cache filesystem implementation using WP Object Cache
  */
@@ -17,7 +19,7 @@ class Mustache_Cache_WordPressCache extends Mustache_Cache_AbstractCache
    * Load the class from cache
    *
    * @param string $key
-   * @return boolean
+   * @return booleanc
    */
   public function load($key)
   {
