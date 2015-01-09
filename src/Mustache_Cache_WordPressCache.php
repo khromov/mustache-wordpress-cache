@@ -23,6 +23,11 @@ class Mustache_Cache_WordPressCache extends \Mustache_Cache_AbstractCache
   {
     $this->key_prefix = $key_prefix;
     $this->group = $group;
+
+    //Add to global cache group so that we do not cache the same templates multiple times on multisite
+    if ( function_exists( 'wp_cache_add_global_groups' ) ) {
+      wp_cache_add_global_groups(array($group));
+    }
   }
 
   /**
