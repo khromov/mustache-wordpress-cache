@@ -1,7 +1,7 @@
 {
   "name": "khromov/mustache-wordpress-cache",
   "description": "WordPress cache adapter for Mustache.php",
-  "license": "GPL",
+  "license": "GPL-2.0-or-later",
   "type": "library",
   "require": {
     "mustache/mustache" : "~2.0"
